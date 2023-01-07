@@ -5,6 +5,7 @@ import { baraja } from './baseDatos.js'
 const mazo = document.getElementById("baraja")
 const cartas = document.getElementById("cardGrid")
 
+
 //Inicia el juego con un array donde pondré las cartas del tapete
 const barajaTapete = [];
 
@@ -30,6 +31,7 @@ const barajaCopia = baraja.slice().sort(() => Math.random() - 0.5);
       imgCarta.setAttribute("data-valor", card.valor);
       imgCarta.setAttribute("data-palo", card.palo);
       cartas.appendChild(imgCarta);
+      
   
       // Asigna el evento click a la imagen
       imgCarta.addEventListener("click", () => {
@@ -57,6 +59,8 @@ mazo.addEventListener("click", () => {
     if (barajaCopia.length > 0) {
         barajaTapete.push(barajaCopia.pop())
         mostrarBarajaTapete()
+        const ultimaCarta = cartas.querySelector('.card:last-child');
+ultimaCarta.scrollIntoView();
         
     } else {
         if (confirm("¿Deseas volver a jugar?")) {
